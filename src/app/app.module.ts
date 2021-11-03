@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MapComponent } from './map/map.component';
+import { CoordsComponent } from './coords/coords.component';
+import { GoogleMapDirective } from './google-map.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MapComponent,
+    CoordsComponent,
+    GoogleMapDirective
   ],
   imports: [
     BrowserModule,
