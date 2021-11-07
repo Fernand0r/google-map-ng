@@ -1,0 +1,23 @@
+$hover-color: rgb(64, 169, 255);
+$active-color: rgb(9, 109, 217);
+.form {
+  height: 72px;
+  display: flex;
+  padding-top: 10px;
+  gap: 10px;
+}
+.marker-list {
+  margin-top: 10px;
+  height: calc(100vh - 92px);
+  overflow: auto;
+}
+.list-item {
+  cursor: pointer;
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+.active-item {
+  color: #fff;
+  background-color: $active-color;
+}

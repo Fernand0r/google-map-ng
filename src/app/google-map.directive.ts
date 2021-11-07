@@ -1,22 +1,31 @@
-import { Directive, ElementRef, Input } from '@angular/core';
-import { Loader } from "@googlemaps/js-api-loader"
+import {
+  Directive,
+  ElementRef,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { Loader } from '@googlemaps/js-api-loader';
 
 @Directive({
-  selector: '[appGoogleMap]'
+  selector: '[appGoogleMap]',
 })
 export class GoogleMapDirective {
-  @Input() appGoogleMap = {}
-  public mapInstance = null
+  @Input() appGoogleMap = {};
+  @Output() mapLoaded = new EventEmitter<{
+    mapIns: google.maps.Map;
+    maps: Maps;
+  }>();
   constructor(el: ElementRef) {
-    this.initMap(el.nativeElement)
+    this.initMap(el.nativeElement);
   }
 
-  async initMap(el: HTMLElement):Promise<void> {
+  async initMap(el: HTMLElement): Promise<void> {
     const loader = new Loader({
-      apiKey: "",
-      version: "weekly",
+      apiKey: '',
+      version: 'test',
     });
-    const { maps } = await loader.load()
-    this.mapInstance = new maps.Map(el, this.appGoogleMap);
+    const { maps } = await loader.load();
+    this.mapLoaded.emit({ mapIns: new maps.Map(el, this.appGoogleMap), maps });
   }
 }

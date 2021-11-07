@@ -1,1 +1,1 @@
-<div [appGoogleMap]="mapInitCfg" [style.height]="'800px'" [style.width]="'800px'"></div>
+<div [appGoogleMap]="mapInitCfg" (mapLoaded)="initCompleted($event)" [ngStyle]="{height: '100%', width: '100%'}"></div>

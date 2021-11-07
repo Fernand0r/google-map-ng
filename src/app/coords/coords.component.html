@@ -1,1 +1,23 @@
-<p>coords works!</p>
+<div class="coord-list">
+    <div class="form">
+        <button nz-button nzType="primary" (click)="debounceGenerateCoords.next()">Generate Button</button>
+        <nz-upload
+          nzAction=""
+          [nzMultiple]="false"
+          [nzLimit]="1"
+          [nzAccept]="'.shp'"
+          (nzChange)="handleChange($event)"
+        >
+          <button nz-button>
+            <i nz-icon nzType="upload"></i>
+            Click to Upload
+          </button>
+        </nz-upload>
+    </div>
+    <nz-list class="marker-list" [nzBordered]="markers.length > 0">
+        <nz-list-item *ngFor="let marker of markers" (click)="setCenter(marker.id)" [ngClass]="{'list-item': true, 'active-item': currentId === marker.id}">
+          {{ marker.id }}
+        </nz-list-item>
+        <nz-list-empty *ngIf="markers.length === 0"></nz-list-empty>
+      </nz-list>
+</div>
